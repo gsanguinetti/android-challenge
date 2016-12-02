@@ -38,7 +38,7 @@ Your task as Android Developer is **clone** or **fork** this repository into one
 
 ###### Once you've finished
 1. Generate the application apk and place it into a distribution folder
-2. Notify by email to rrhh@idealista.com which branch you want our Android team analyze
+2. Notify by email to santiago.castro@jobsity.com which branch you want our Android team analyze
 3. Have a rest after this "beautiful" code
 
 #License
@@ -62,4 +62,3 @@ limitations under the License.
 [FragmentLink]: http://developer.android.com/intl/es/guide/components/fragments.html
 [GameOfThronesLink]: http://www.imdb.com/title/tt0944947/
 [ViewPagerLink]: http://developer.android.com/intl/es/training/animation/screen-slide.html
-[npatarino]: https://github.com/npatarino
