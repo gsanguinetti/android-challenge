@@ -6,14 +6,14 @@ Game of Thrones for Android Challenge offers an app using an API to get data for
 
 ## Getting started
 
-This repository contains an Android app that retrieve a list of some [Game of Thrones][GameOfThronesLink]' characters from an API. The app shows a list of the houses of the characters, the characters themselves and a detail description of each one.
+This repository contains an Android app that retrieve a list of some [Game of Thrones][GameOfThronesLink]' characterEntities from an API. The app shows a list of the houses of the characterEntities, the characterEntities themselves and a detail description of each one.
 
 This behaviour it's done in two different [Activities][ActivityLink], one for the two lists and other for details of the character:
 
 ![ScreenshotListCharacters][ScreenshotListCharacters]![ScreenshotListHouses][ScreenshotListHouses]![ScreenshotDetail][ScreenshotDetail]  
 * ``HomeActivity`` contains two [Fragments][FragmentLink] in a [ViewPager][ViewPagerLink]
-  * `GoTListFragment` shows a list of some the this tv show's characters.
-  * `GoTHousesListFragment` shows a list of the noble houses of the characters 
+  * `GoTListFragment` shows a list of some the this tv show's characterEntities.
+  * `GoTHousesListFragment` shows a list of the noble houses of the characterEntities
 
 * ``DetailActivity`` shows the name, photo and description of a character
 
@@ -25,8 +25,8 @@ Your task as Android Developer is **clone** or **fork** this repository into one
 
 ###### New functionalities to add
 
-1. Search characters by name in the characters list
-2. Create a list of a characters by house, accessing to it by clicking a house image in the list of houses
+1. Search characterEntities by name in the characterEntities list
+2. Create a list of a characterEntities by house, accessing to it by clicking a house image in the list of houses
 3. Capability to work offline
 4. Refactor the code
 

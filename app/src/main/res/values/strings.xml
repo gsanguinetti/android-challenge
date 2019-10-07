@@ -3,7 +3,11 @@
     <string name="title_activity_home">Game of Thrones</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="characters">Characters</string>
+    <string name="houses">Houses</string>
+
+    <string name="loading_content_error">Ups!, we have got an error while getting content. Please try again.</string>
+    <string name="retry">Retry</string>
+    <string name="empty_results">There are no results to show</string>
 
 </resources>
