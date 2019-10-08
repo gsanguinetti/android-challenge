@@ -14,7 +14,8 @@ class GoTHousesDataRepository(
             dataProvider.getGoTCharacters()
                     .map { it ->
                         //Filtering null HouseIds. In production projects this line should track an non critical exception
-                        it.filter { it.houseId.isNotEmpty()
+                        it.filter {
+                            it.houseId.isNotEmpty()
                                     .apply { if(!this) Log.d(LOGGER_TAG, "HouseId null: $it") } }
                                 //Filtering null House names. In production projects this line should track an non critical exception
                                 .filter {

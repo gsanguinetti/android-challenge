@@ -9,7 +9,7 @@ class GoTCharacterListUseCase(
         private val characterListRepository: GoTCharacterListRepository
 ) : SingleUseCase<List<GoTCharacter>, String>() {
 
-    override fun buildUseCaseObservable(params: String?): Single<List<GoTCharacter>> =
+    public override fun buildUseCaseObservable(params: String?): Single<List<GoTCharacter>> =
             characterListRepository.getCharacterList().setUpForUseCase()
                     .map { list -> if(params.isNullOrEmpty()) list else list.filter { it.houseId == params } }
 }

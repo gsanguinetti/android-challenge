@@ -29,9 +29,12 @@ class GoTCharacterDetailActivity : AppCompatActivity() {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
 
-        //Parallax effect
+        configureParallaxEffect()
+    }
+
+    private fun configureParallaxEffect() {
         svScrollContent.onScrollChanged = {
-            ivPhoto.translationY = it * 0.5f
+            ivPhoto.translationY = it * PARALLAX_EFFECT_FACTOR
         }
     }
 
@@ -43,6 +46,7 @@ class GoTCharacterDetailActivity : AppCompatActivity() {
     companion object {
 
         private const val CHARACTER_EXTRA = "characterExtra"
+        private const val PARALLAX_EFFECT_FACTOR = 0.5f
 
         fun startActivity(activity: AppCompatActivity,
                           sharedElementTransitionViews :List<androidx.core.util.Pair<View, String>>,

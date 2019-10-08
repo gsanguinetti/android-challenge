@@ -9,6 +9,6 @@ class GoTHousesUseCase(
         private val housesRepository: GoTHousesRepository
 ) : SingleUseCase<List<GoTHouse>, Unit>() {
 
-    override fun buildUseCaseObservable(params: Unit?): Single<List<GoTHouse>> =
+    public override fun buildUseCaseObservable(params: Unit?): Single<List<GoTHouse>> =
         housesRepository.getHouses().setUpForUseCase()
 }

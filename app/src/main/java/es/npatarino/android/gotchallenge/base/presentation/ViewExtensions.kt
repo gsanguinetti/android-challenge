@@ -13,7 +13,7 @@ fun View.showView() {
     this.visibility = View.VISIBLE
 }
 
-fun ImageView.loadImage(imageUrl :String, defaultDrawableKey :String? = null) {
+fun ImageView.loadImage(imageUrl :String) {
     if(imageUrl.isNotEmpty()) {
         Picasso.with(context)
                 .load(imageUrl)

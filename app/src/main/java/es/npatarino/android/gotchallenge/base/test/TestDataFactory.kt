@@ -1,6 +1,6 @@
 package es.npatarino.android.gotchallenge.base.test
 
-import java.util.concurrent.ThreadLocalRandom
+import kotlin.random.Random
 
 /**
  * Factory functions for dataModule instances
@@ -9,13 +9,13 @@ import java.util.concurrent.ThreadLocalRandom
 fun randomString(): String = java.util.UUID.randomUUID().toString()
 
 fun randomInt(start: Int = 1, end: Int = 1000): Int =
-    ThreadLocalRandom.current().nextInt(start, end + 1)
+    Random.nextInt(start, end + 1)
 
-fun randomDouble(): Double = ThreadLocalRandom.current().nextDouble()
+fun randomDouble(): Double = Random.nextDouble()
 
-fun randomLong(): Long = randomInt().toLong()
+fun randomLong(): Long = Random.nextLong()
 
-fun randomBoolean(): Boolean = Math.random() < 0.5
+fun randomBoolean(): Boolean = Random.nextBoolean()
 
 fun randomStringList(count: Int): List<String> {
     val items: MutableList<String> = mutableListOf()

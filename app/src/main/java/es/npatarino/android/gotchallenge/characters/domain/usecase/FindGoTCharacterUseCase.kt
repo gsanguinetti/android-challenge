@@ -10,7 +10,7 @@ class FindGoTCharacterUseCase(
         private val characterListRepository: GoTCharacterListRepository
 ) : SingleUseCase<List<GoTCharacter>, CharacterRequest>() {
 
-    override fun buildUseCaseObservable(params: CharacterRequest?): Single<List<GoTCharacter>> {
+    public override fun buildUseCaseObservable(params: CharacterRequest?): Single<List<GoTCharacter>> {
         check(params != null)
         return if(params.query.isBlank())
             characterListRepository.getCharacterList()
