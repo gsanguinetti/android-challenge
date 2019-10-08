@@ -1,63 +1,29 @@
 # Game of Thrones for Android Challenge
-Android developers face challenges almost everyday during development: performance, security, backwards compatibility, testing... And mainly refactoring for it's own or legacy code. 
-This repository contains a project to face an small challenge where the developer should add some new features, detect (and implement) patterns, add tests, re-think the architecture and do a clean code.
+### Project Structure  
+This project was organized using the principles of the [app modularization by features](https://proandroiddev.com/intro-to-app-modularization-42411e4c421e). Although this approach is not necessary for an app as small as this challenge, it is useful to demonstrate how to structure a project that aims to build a robust and scalable application. This is a very common and good practice to keep different teams working on isolated and decoupled features. This application was divided in three "product features" packages:   
+- **Characters**: This feature is the responsible for displaying the GoT Character list and filtering using the search interface.  
+- **Houses**: This feature is the responsible for displaying the GoT House list.  
+- **Home**: The main screen of the app, which loads the characters and houses tabs.
+  
+In addition to these packages, the project contains the following additional ones:  
+- **base**: This is a base module which contains architecture base classes and helpers, which are used by the different product packages.   
+- **data**: This module contains the network and local db communication logic between each product packages and the data source, bringing a common data source class with api call capabilities.  
+ 
+  
+### Architecture  
+In order to maintain this code decoupled, testable and robust, the architecture of this app was designed using [clean architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). Each Product Feature contains the following layers represented as packages in the src module folder:  
+- **Domain Layer**: Contains the business logic of each module, totally independent of the device, the networking data or the ui. Each business logic task is represented as an *Use Case*.  
+- **Repository Layer**: Represented by *Repositories* which have the responsibility to access and get data from the different sources (LocalDb and Networking).  
+- **Presentation Layer**: Layer responsible for displaying the information provided by the business logic layer, using the UI interface. This layer use the [Google's architecture components](https://developer.android.com/topic/libraries/architecture/) approach to manipulate data between the activities/fragment and the presentation classes (represented by ViewModels).  
+  
+Each user flow which implements these three layers was developed using **async, event-based and reactive programming** with [RxJava](https://github.com/ReactiveX/RxJava).  
+  
+  
+### Dependency Injection  
+All the app component dependencies are injected using [Koin](https://insert-koin.io/), which provides a lightweight and pure Kotlin dependency injection mechanism with [glorious support for Android architecture classes such as ViewModels](https://insert-koin.io/docs/1.0/documentation/reference/index.html#_architecture_components_with_koin_viewmodel). Each module has an extra package called *module* who contains the injections of all the dependencies used by this module.  
+  
+### Unit Testing  
+Each module contains a set of unit test classes that intends to test every component of the architecture. These test classes were designed to check the output of the class being tested, using [Mockito](https://site.mockito.org/) as a mocking mechanism of their inputs and dependencies.
 
-Game of Thrones for Android Challenge offers an app using an API to get data for [Game of Thrones][GameOfThronesLink] tv show. It's ready to run, it's working, but the code need to be improved. That's your challenge!
-
-## Getting started
-
-This repository contains an Android app that retrieve a list of some [Game of Thrones][GameOfThronesLink]' characterEntities from an API. The app shows a list of the houses of the characterEntities, the characterEntities themselves and a detail description of each one.
-
-This behaviour it's done in two different [Activities][ActivityLink], one for the two lists and other for details of the character:
-
-![ScreenshotListCharacters][ScreenshotListCharacters]![ScreenshotListHouses][ScreenshotListHouses]![ScreenshotDetail][ScreenshotDetail]  
-* ``HomeActivity`` contains two [Fragments][FragmentLink] in a [ViewPager][ViewPagerLink]
-  * `GoTListFragment` shows a list of some the this tv show's characterEntities.
-  * `GoTHousesListFragment` shows a list of the noble houses of the characterEntities
-
-* ``DetailActivity`` shows the name, photo and description of a character
-
-## Tasks 
-
-Your task as Android Developer is **clone** or **fork** this repository into one yours, **add some functionalities** and **refactor** the code before you give access to your repository.
-
-**The code in this application it's ready to be imported into your Android Studio and ready to run it (and see it working) without any change**
-
-###### New functionalities to add
-
-1. Search characterEntities by name in the characterEntities list
-2. Create a list of a characterEntities by house, accessing to it by clicking a house image in the list of houses
-3. Capability to work offline
-4. Refactor the code
-
-###### Some optional tasks to do:
-
-1. Tests the main logic and a high level flows.
-2. Add transitions between list and detail
-3. Add parallax effect into detail page
-
-###### Once you've finished
-1. Generate the application apk and place it into a distribution folder
-2. Have a rest after this "beautiful" code
-
-#License
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-[ScreenshotListCharacters]: ./art/ScreenshotListCharacters.png
-[ScreenshotListHouses]: ./art/ScreenshotListHouses.png
-[ScreenshotDetail]: ./art/ScreenshotDetail.png
-[ActivityLink]: http://developer.android.com/intl/es/guide/components/activities.html
-[FragmentLink]: http://developer.android.com/intl/es/guide/components/fragments.html
-[GameOfThronesLink]: http://www.imdb.com/title/tt0944947/
-[ViewPagerLink]: http://developer.android.com/intl/es/training/animation/screen-slide.html
+### Challenge Considerations
+The API got its images inaccessible. In this scenario, two different approaches would be taken from the app: show a placeholder or storage a default image for each character and house. Keep a default image stored in the app is a very bad practice because this increase severally the final apk size and should be considered fixed in server side.
